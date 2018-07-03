@@ -1,5 +1,6 @@
 package com.ratnadeep.techarticle.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -19,5 +20,7 @@ class Article {
     private String description;
     @Column(name = "data")
     private String data;
+    @Column(name = "author_id")
+    private Integer authorId;
 
 }

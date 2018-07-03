@@ -1,8 +1,11 @@
 package com.ratnadeep.techarticle.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "authors", catalog = "techarticle")
@@ -17,5 +20,9 @@ class Author {
     private String name;
     @Column(name = "username")
     private String userName;
+
+    @OneToMany
+    @JoinColumn(name = "author_id", referencedColumnName = "author_id")
+    private List<Article> articles = new ArrayList<>();
 
 }

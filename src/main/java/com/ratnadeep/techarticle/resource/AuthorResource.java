@@ -14,7 +14,7 @@ public class AuthorResource {
     @Autowired
     private AuthorRespository authorRespository;
 
-    @GetMapping("/{username}")
+    @GetMapping("/user/{username}")
     public Author getAuthor(@PathVariable final String username) {
         return authorRespository.findByUserName(username);
     }

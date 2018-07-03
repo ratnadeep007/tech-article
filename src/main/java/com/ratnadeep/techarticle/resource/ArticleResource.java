@@ -32,7 +32,7 @@ public class ArticleResource {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public Article updateArticle(@RequestBody final Article article) {
+    public Article updateArticle(@PathVariable final Article article) {
         articleRespository.save(article);
         return article;
     }
