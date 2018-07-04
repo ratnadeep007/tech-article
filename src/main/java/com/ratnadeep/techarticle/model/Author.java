@@ -1,6 +1,7 @@
 package com.ratnadeep.techarticle.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -21,8 +22,9 @@ class Author {
     @Column(name = "username")
     private String userName;
 
-    @OneToMany
-    @JoinColumn(name = "author_id", referencedColumnName = "author_id")
+    @OneToMany(mappedBy = "author", fetch = FetchType.EAGER)
+    @JsonIgnoreProperties("author")
+//    @JoinColumn(name = "author_id", referencedColumnName = "author_id")
     private List<Article> articles = new ArrayList<>();
 
 }

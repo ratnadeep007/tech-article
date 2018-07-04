@@ -1,5 +1,6 @@
 package com.ratnadeep.techarticle.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
@@ -20,7 +21,12 @@ class Article {
     private String description;
     @Column(name = "data")
     private String data;
-    @Column(name = "author_id")
-    private Integer authorId;
+//    @Column(name = "author_id")
+//    private Integer authorId;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "fk_author")
+    @JsonIgnoreProperties("articles")
+    private Author author;
 
 }
